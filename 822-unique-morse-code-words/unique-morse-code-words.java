@@ -4,7 +4,7 @@ class Solution {
         HashSet<String> set=new HashSet<>();
       
         for(String word:words){
-            StringBuffer s=new StringBuffer();
+            StringBuilder s=new StringBuilder();
             for(char c: word.toCharArray()){
                 
                 s.append(arr[c-'a']);
