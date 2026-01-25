@@ -2,31 +2,30 @@
         
         class Solution {
     public int[] rotateElements(int[] nums, int k) {
-        ArrayList<Integer> positions = new ArrayList<>();
-        ArrayList<Integer> values = new ArrayList<>();
-
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] >= 0) {
-                positions.add(i);
-                values.add(nums[i]);
+             List<Integer> non=new ArrayList<>();
+        for(int x:nums){
+            if(x>=0){
+                non.add(x);
             }
         }
-
-        if (positions.size() == 0) 
+        int size=non.size();
+        if(size==0){
             return nums;
-
-        k %= positions.size();
-
-        ArrayList<Integer> rotated = new ArrayList<>(values.size());
-        for (int i = k; i < values.size(); i++) 
-            rotated.add(values.get(i));
-        for (int i = 0; i < k; i++) 
-            rotated.add(values.get(i));
-
-        for (int t = 0; t < positions.size(); t++) {
-            nums[positions.get(t)] = rotated.get(t);
         }
+        k=k%size;
+        int rotate[]=new int[size];
+        for(int i=0;i<size;i++){
+            rotate[i]=non.get((i+k)%size);
+        }
+        int idx=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>=0){
+                nums[i]=rotate[idx++];
 
+                    
+            }
+        }
         return nums;
+
     }
 }
